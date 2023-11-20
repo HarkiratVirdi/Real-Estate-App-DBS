@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { Button, Group } from '@mantine/core';
+import { Link } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div
+        style={{
+          height: '85vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Group>
+          <Link to="/staff">
+            <Button>Staff Information</Button>
+          </Link>
+
+          <Link to="/client">
+            <Button>Client Information</Button>
+          </Link>
+
+          <Link to="/branch">
+            <Button>Branch Information</Button>
+          </Link>
+        </Group>
+      </div>
     </div>
   );
 }
