@@ -11,7 +11,7 @@ const useFetch = (endpoint) => {
       .get(baseRoute + endpoint)
       .then((res) => {
         console.log('data', endpoint, res);
-        setData(res);
+        setData(res.data);
       })
       .catch((err) => {
         console.log('error', endpoint, err);

@@ -2,13 +2,13 @@ import { Container } from '@mantine/core';
 import React from 'react';
 
 const Layout = ({ children }) => {
-  const demoProps = {
-    bg: 'var(--mantine-color-blue-light)',
+  const props = {
     my: 'md',
     mx: 'xl',
+    size: '1360px',
   };
 
-  return <Container {...demoProps}>{children}</Container>;
+  return <Container {...props}>{children}</Container>;
 };
 
 export default Layout;
