@@ -5,7 +5,7 @@ import 'react-data-grid/lib/styles.css';
 import './styles.css';
 import useFetch from '../../hooks/useFetch';
 import endpoints from '../../api/endpoints';
-import { Button } from '@mantine/core';
+import { Button, Title } from '@mantine/core';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
@@ -49,6 +49,9 @@ const Staff = () => {
   if (data) {
     return (
       <Layout>
+        <Title mb={'md'} order={2}>
+          Manage Staff
+        </Title>
         <div
           id="myGrid"
           className="ag-theme-alpine"
@@ -85,7 +88,7 @@ const Staff = () => {
         </div>
 
         <Link to="/addStaff">
-          <Button>+ Add New Staff Member</Button>
+          <Button mt={'lg'}>+ Add New Staff Member</Button>
         </Link>
       </Layout>
     );

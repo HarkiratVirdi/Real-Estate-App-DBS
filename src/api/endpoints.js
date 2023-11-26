@@ -7,6 +7,7 @@ const endpoints = {
     getAllBranches: () => 'api/branch',
     getBranch: (branchId) => `api/branch/${branchId}`,
     updateBranch: (branchId) => `api/branch/${branchId}`,
+    addBranch: () => 'api/branch/addBranch',
   },
   client: {
     getClients: () => 'api/client',

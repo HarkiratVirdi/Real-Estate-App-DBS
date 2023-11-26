@@ -4,6 +4,7 @@ import StaffHiringForm from '../pages/Staff/StaffHiringForm';
 import Staff from '../pages/Staff/index';
 import Client from '../pages/Client/index';
 import Branch from '../pages/Branch/index';
+import AddBranchForm from '../pages/Branch/AddBranchForm';
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
   {
     path: '/branch',
     element: <Branch />,
+  },
+  {
+    path: '/addbranch',
+    element: <AddBranchForm />,
   },
   {
     path: '/client',
