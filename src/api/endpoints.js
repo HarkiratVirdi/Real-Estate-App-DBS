@@ -11,8 +11,8 @@ const endpoints = {
   },
   client: {
     getClients: () => 'api/client',
-    addClient: () => '/api/client/addClient',
-    updateClient: (id) => `/api/client/updateClient/${id}`,
+    addClient: () => 'api/client/addClient',
+    updateClient: (id) => `api/client/updateClient/${id}`,
   },
 };
 
