@@ -2,6 +2,7 @@ const endpoints = {
   staff: {
     allStaff: () => 'api/staff',
     updateStaff: (id) => `api/staff/updateStaff/${id}`,
+    addStaff: () => `api/staff/addStaff`,
   },
   branch: {
     getAllBranches: () => 'api/branch',

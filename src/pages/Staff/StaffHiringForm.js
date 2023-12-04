@@ -1,47 +1,160 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Title,
   TextInput,
   Button,
+  Text,
   Group,
   NumberInput,
   Input,
 } from '@mantine/core';
+import axios from 'axios';
 import Layout from '../../components/Layout/index';
+import endpoints from '../../api/endpoints';
+import { baseRoute } from '../../utils';
 
 const StaffHiringForm = () => {
-  const onHire = (e) => {};
-  const onCancel = (e) => {};
+  const initialState = {
+    STAFFNO: '',
+    FNAME: '',
+    LNAME: '',
+    POSITION: '',
+    SEX: '',
+    DOB: '',
+    SALARY: '',
+    BRANCHNO: '',
+    TELEPHONE: '',
+    MOBILE: '',
+    EMAIL: '',
+  };
+  const [staffDetails, setStaffDetails] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleChange = (e) => {
+    console.log('event', e);
+
+    return setStaffDetails((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onHire = async (e) => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        baseRoute + endpoints.staff.addStaff(),
+        staffDetails,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response) {
+        setLoading(false);
+        setShowNotification(true);
+        setStaffDetails(initialState);
+      }
+    } catch (error) {
+      console.log('error', error);
+      setLoading(false);
+    }
+  };
+
+  const onCancel = (e) => {
+    return setStaffDetails(initialState);
+  };
 
   return (
     <Layout>
       <Title order={2}>Staff Hiring Form</Title>
 
       <Group grow={true} mt={'md'}>
-        <TextInput label="Staff No" placeholder="Staff No" />
-        <TextInput label="First Name" placeholder="First Name" />
-        <TextInput label="Last Name" placeholder="Last Name" />
-        <TextInput label="Gender" placeholder="Gender" />
+        <TextInput
+          label="Staff No"
+          onChange={handleChange}
+          name="STAFFNO"
+          placeholder="Staff No"
+        />
+        <TextInput
+          onChange={handleChange}
+          name="FNAME"
+          label="First Name"
+          placeholder="First Name"
+        />
+        <TextInput
+          onChange={handleChange}
+          name="LNAME"
+          label="Last Name"
+          placeholder="Last Name"
+        />
+        <TextInput
+          onChange={handleChange}
+          name="SEX"
+          label="Gender"
+          placeholder="Gender"
+        />
       </Group>
 
       <Group grow={true} mt={'md'}>
-        <TextInput label="Branch No" placeholder="Branch No" />
-        <TextInput label="Position" placeholder="Position" />
+        <TextInput
+          onChange={handleChange}
+          name="BRANCHNO"
+          label="Branch No"
+          placeholder="Branch No"
+        />
+        <TextInput
+          onChange={handleChange}
+          name="POSITION"
+          label="Position"
+          placeholder="Position"
+        />
         <Input.Wrapper label={'DOB'}>
-          <Input type={'date'} />
+          <Input type={'date'} onChange={handleChange} name="DOB" />
         </Input.Wrapper>
-        <NumberInput label="Salary" placeholder="Salary" />
+        <NumberInput
+          label="Salary"
+          placeholder="Salary"
+          onChange={(e) => setStaffDetails((prev) => ({ ...prev, SALARY: e }))}
+          name="SALARY"
+        />
       </Group>
 
       <Group grow={true} mt={'md'}>
-        <TextInput label="Telephone" placeholder="Telephone" />
-        <TextInput label="Mobile" placeholder="Mobile" />
-        <TextInput label="Email" placeholder="Email" />
+        <TextInput
+          onChange={handleChange}
+          name="TELEPHONE"
+          label="Telephone"
+          placeholder="Telephone"
+        />
+        <TextInput
+          onChange={handleChange}
+          name="MOBILE"
+          label="Mobile"
+          placeholder="Mobile"
+        />
+        <TextInput
+          onChange={handleChange}
+          name="EMAIL"
+          label="Email"
+          placeholder="Email"
+        />
       </Group>
       <Group my={'md'}>
         <Button onClick={onCancel}>Cancel </Button>
-        <Button onClick={onHire}>Hire </Button>
+        <Button loading={loading} onClick={onHire}>
+          Hire{' '}
+        </Button>
       </Group>
+
+      {showNotification && (
+        <Text mt={'lg'} style={{ color: 'green' }}>
+          New Staff Added
+        </Text>
+      )}
     </Layout>
   );
 };
