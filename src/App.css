@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+
+.mantine-AppShell-root{
+  background-image: url('../public/homePage.jpg');
+  background-size: cover;
+}

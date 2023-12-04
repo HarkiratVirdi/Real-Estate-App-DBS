@@ -32,8 +32,6 @@ const StaffHiringForm = () => {
   const [showNotification, setShowNotification] = useState(false);
 
   const handleChange = (e) => {
-    console.log('event', e);
-
     return setStaffDetails((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -76,24 +74,28 @@ const StaffHiringForm = () => {
         <TextInput
           label="Staff No"
           onChange={handleChange}
+          value={staffDetails.STAFFNO}
           name="STAFFNO"
           placeholder="Staff No"
         />
         <TextInput
           onChange={handleChange}
           name="FNAME"
+          value={staffDetails.FNAME}
           label="First Name"
           placeholder="First Name"
         />
         <TextInput
           onChange={handleChange}
           name="LNAME"
+          value={staffDetails.LNAME}
           label="Last Name"
           placeholder="Last Name"
         />
         <TextInput
           onChange={handleChange}
           name="SEX"
+          value={staffDetails.SEX}
           label="Gender"
           placeholder="Gender"
         />
@@ -103,6 +105,7 @@ const StaffHiringForm = () => {
         <TextInput
           onChange={handleChange}
           name="BRANCHNO"
+          value={staffDetails.BRANCHNO}
           label="Branch No"
           placeholder="Branch No"
         />
@@ -110,22 +113,30 @@ const StaffHiringForm = () => {
           onChange={handleChange}
           name="POSITION"
           label="Position"
+          value={staffDetails.POSITION}
           placeholder="Position"
         />
         <Input.Wrapper label={'DOB'}>
-          <Input type={'date'} onChange={handleChange} name="DOB" />
+          <Input
+            type={'date'}
+            onChange={handleChange}
+            value={staffDetails.DOB}
+            name="DOB"
+          />
         </Input.Wrapper>
         <NumberInput
           label="Salary"
           placeholder="Salary"
           onChange={(e) => setStaffDetails((prev) => ({ ...prev, SALARY: e }))}
           name="SALARY"
+          value={staffDetails.SALARY}
         />
       </Group>
 
       <Group grow={true} mt={'md'}>
         <TextInput
           onChange={handleChange}
+          value={staffDetails.TELEPHONE}
           name="TELEPHONE"
           label="Telephone"
           placeholder="Telephone"
@@ -133,12 +144,14 @@ const StaffHiringForm = () => {
         <TextInput
           onChange={handleChange}
           name="MOBILE"
+          value={staffDetails.MOBILE}
           label="Mobile"
           placeholder="Mobile"
         />
         <TextInput
           onChange={handleChange}
           name="EMAIL"
+          value={staffDetails.EMAIL}
           label="Email"
           placeholder="Email"
         />

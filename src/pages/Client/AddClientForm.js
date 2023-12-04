@@ -74,18 +74,21 @@ const AddClientForm = () => {
         <TextInput
           onChange={handleChange}
           name="clientNo"
+          value={clientDetails.clientNo}
           label="Client No"
           placeholder="Client No"
         />
         <TextInput
           onChange={handleChange}
           name="fname"
+          value={clientDetails.fname}
           label="First Name"
           placeholder="First Name"
         />
         <TextInput
           onChange={handleChange}
           name="lname"
+          value={clientDetails.lname}
           label="Last Name"
           placeholder="Last Name"
         />
@@ -95,18 +98,21 @@ const AddClientForm = () => {
         <TextInput
           onChange={handleChange}
           label="Telephone No"
+          value={clientDetails.telno}
           name="telno"
           placeholder="Telephone No"
         />
         <TextInput
           onChange={handleChange}
           label="Street"
+          value={clientDetails.street}
           name="street"
           placeholder="Street"
         />
         <TextInput
           onChange={handleChange}
           name="city"
+          value={clientDetails.city}
           label="City"
           placeholder="City"
         />
@@ -116,6 +122,7 @@ const AddClientForm = () => {
         <TextInput
           onChange={handleChange}
           name="email"
+          value={clientDetails.email}
           label="Email"
           placeholder="Email"
         />
@@ -123,12 +130,14 @@ const AddClientForm = () => {
           onChange={handleChange}
           label="Preftype"
           name="preftype"
+          value={clientDetails.preftype}
           placeholder="Preftype"
         />
         <TextInput
           onChange={handleChange}
           label="Maxrent"
           name="maxrent"
+          value={clientDetails.maxrent}
           placeholder="Maxrent"
         />
       </Group>

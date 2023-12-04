@@ -9,11 +9,16 @@ function App() {
 
   return (
     <AppShell padding="md" header={{ height: 60 }}>
-      <AppShell.Header ml={'lg'} pt={'sm'}>
-        <Title order={2}>DBS 501 Dream House Real Estate</Title>
+      <AppShell.Header style={{ background: 'transparent' }}>
+        <Title mt={'md'} ml={'md'} order={2}>
+          DBS 501 Dream House Real Estate
+        </Title>
       </AppShell.Header>
 
-      <AppShell.Main pt={`calc(${rem(60)} + var(--mantine-spacing-md))`}>
+      <AppShell.Main
+        pt={`calc(${rem(60)} + var(--mantine-spacing-md))`}
+        style={{ background: 'transparent' }}
+      >
         <div className="App">
           <div
             style={{
@@ -25,15 +30,21 @@ function App() {
           >
             <Group>
               <Link to="/staff">
-                <Button>Staff Information</Button>
+                <Button variant="filled" color="gray">
+                  Staff Information
+                </Button>
               </Link>
 
               <Link to="/client">
-                <Button>Client Information</Button>
+                <Button variant="filled" color="gray">
+                  Client Information
+                </Button>
               </Link>
 
               <Link to="/branch">
-                <Button>Branch Information</Button>
+                <Button variant="filled" color="gray">
+                  Branch Information
+                </Button>
               </Link>
             </Group>
           </div>
