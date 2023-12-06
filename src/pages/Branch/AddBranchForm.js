@@ -101,8 +101,6 @@ const AddBranchForm = () => {
           + Add Branch
         </Button>
       </div>
-
-      {error.showError && <Text>{error.msg}</Text>}
     </Layout>
   );
 };
