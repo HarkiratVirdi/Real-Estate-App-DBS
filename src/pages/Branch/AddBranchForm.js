@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Title, TextInput, Button, Group } from '@mantine/core';
+import { Title, TextInput, Button, Group, Text } from '@mantine/core';
 import Layout from '../../components/Layout/index';
 import endpoints from '../../api/endpoints';
 import axios from 'axios';
@@ -10,6 +10,7 @@ const AddBranchForm = () => {
   const [branchDetails, setBranchDetails] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+  const [error, setError] = useState({ showError: false, msg: '' });
 
   const onAddBranch = async (e) => {
     setIsLoading(true);
@@ -29,9 +30,14 @@ const AddBranchForm = () => {
         setIsLoading(false);
         setShowNotification(true);
         branchDetails(initialState);
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       }
     } catch (error) {
       console.log('error', error);
+      setError({ msg: error.message, showError: true });
       setIsLoading(false);
     }
   };
@@ -95,6 +101,8 @@ const AddBranchForm = () => {
           + Add Branch
         </Button>
       </div>
+
+      {error.showError && <Text>{error.msg}</Text>}
     </Layout>
   );
 };

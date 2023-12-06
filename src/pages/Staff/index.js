@@ -10,6 +10,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import axios from 'axios';
+import StaffHiringForm from './StaffHiringForm';
 import { baseRoute } from '../../utils';
 
 const Staff = () => {
@@ -87,9 +88,11 @@ const Staff = () => {
           />
         </div>
 
+        <StaffHiringForm />
+        {/* 
         <Link to="/addStaff">
           <Button mt={'lg'}>+ Add New Staff Member</Button>
-        </Link>
+        </Link> */}
       </Layout>
     );
   }

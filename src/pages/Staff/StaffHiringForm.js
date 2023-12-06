@@ -30,6 +30,7 @@ const StaffHiringForm = () => {
   const [staffDetails, setStaffDetails] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+  const [error, setError] = useState({ showError: false, msg: '' });
 
   const handleChange = (e) => {
     return setStaffDetails((prev) => ({
@@ -55,9 +56,15 @@ const StaffHiringForm = () => {
         setLoading(false);
         setShowNotification(true);
         setStaffDetails(initialState);
+        setError({ msg: '', showError: false });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       }
     } catch (error) {
       console.log('error', error);
+      setError({ msg: error.message, showError: true });
       setLoading(false);
     }
   };
@@ -67,7 +74,7 @@ const StaffHiringForm = () => {
   };
 
   return (
-    <Layout>
+    <div style={{ marginTop: '2rem' }}>
       <Title order={2}>Staff Hiring Form</Title>
 
       <Group grow={true} mt={'md'}>
@@ -163,12 +170,14 @@ const StaffHiringForm = () => {
         </Button>
       </Group>
 
-      {showNotification && (
+      {showNotification && !error.showError && (
         <Text mt={'lg'} style={{ color: 'green' }}>
           New Staff Added
         </Text>
       )}
-    </Layout>
+
+      {error.showError && <Text>{error.msg}</Text>}
+    </div>
   );
 };
 

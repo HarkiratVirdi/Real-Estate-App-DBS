@@ -7,10 +7,11 @@ import { Paper } from '@mantine/core';
 const Client = () => {
   return (
     <>
+      <ClientTable />
       <Layout>
         <AddClientForm />
       </Layout>
-      <ClientTable />
+      <br />
     </>
   );
 };

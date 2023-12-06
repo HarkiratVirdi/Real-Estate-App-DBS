@@ -29,6 +29,7 @@ const AddClientForm = () => {
   const [clientDetails, setClientDetails] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+  const [error, setError] = useState({ showError: false, msg: '' });
 
   const onAddClient = async (e) => {
     setIsLoading(true);
@@ -47,9 +48,15 @@ const AddClientForm = () => {
         setIsLoading(false);
         setShowNotification(true);
         setClientDetails(initialState);
+        setError({ msg: '', showError: false });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       }
     } catch (error) {
       console.log('error', error);
+      setError({ msg: error.message, showError: true });
       setIsLoading(false);
     }
   };
@@ -147,11 +154,13 @@ const AddClientForm = () => {
           + Add Client
         </Button>
       </Group>
-      {showNotification && (
+      {showNotification && !error.showError && (
         <Text mt={'lg'} style={{ color: 'green' }}>
           New Client Added
         </Text>
       )}
+
+      {error.showError && <Text>{error.msg}</Text>}
     </>
   );
 };
